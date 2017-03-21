@@ -42,13 +42,16 @@ class PhotoStore {
     func fetchInterestingPhotos(completion: @escaping (PhotoResult) -> Void) {
         let url = FlickrAPI.interestingPhotosURL
         let request = URLRequest(url: url)
+        
         let task = session.dataTask(with: request) {
             (data, response, error) -> Void in
-            
+
             let result = self.processPhotosRequest(data: data, error: error)
-            completion(result)
+            OperationQueue.main.addOperation {
+                completion(result)
+                
+            }
         }
-        
         task.resume()
     }
     
@@ -58,8 +61,16 @@ class PhotoStore {
         let request = URLRequest(url: photoURL)
         let task = session.dataTask(with: request) {
             (data, response, error) -> Void in
+            
+            if let statCode = response as? HTTPURLResponse {
+                print("Status Codes are: \(statCode.statusCode)")
+                print("header Fields are: \(statCode.allHeaderFields)")
+            }
+            
             let result = self.processImageRequest(data: data, error: error)
+            OperationQueue.main.addOperation {
                 completion(result)
+            }
         }
         task.resume()
     }
