@@ -6,7 +6,22 @@
 //  Copyright © 2017 Marx, Brian. All rights reserved.
 //
 
+import UIKit
 import Foundation
+
+enum ImageResult {
+    case success(UIImage)
+    case failure(Error)
+}
+
+enum PhotoError: Error {
+    case imageCreationError
+}
+
+enum PhotosResult {
+    case success([Photo])
+    case failure(Error)
+}
 
 class PhotoStore {
     
@@ -16,22 +31,22 @@ class PhotoStore {
         return URLSession(configuration: config)
     }()
     
-    func fetchInterestingPhotos() {
+    func fetchInterestingPhotos(completion: @escaping (PhotosResult) -> Void) {
         let url = FlickrAPI.interestingPhotosURL
         let request = URLRequest(url: url)
         let task = session.dataTask(with: request) {
             (data, response, error) -> Void in
             
-            if let jsonData = data {
-                if let jsonString = String(data: jsonData, encoding: .utf8) {
-                    print(jsonString)
-                }
-            } else if let requestError = error {
-                print("Error fetching interesting photos: \(requestError)")
-            } else {
-                print("Unexpected error with the request")
-            }
+            let result = self.processPhotoRequest(data: data, error: error)
+            completion(result)
         }
         task.resume()
+    }
+    
+    private func processPhotoRequest(data: Data?, error: Error?) -> PhotosResult {
+        guard let jsonData = data else {
+            return .failure(error!)
+        }
+        return FlickrAPI.photos(fromJSON: jsonData)
     }
 }
