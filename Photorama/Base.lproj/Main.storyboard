@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -24,21 +25,41 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GPO-bb-SIu">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MLZ-c1-dwr">
-                                    <size key="itemSize" width="50" height="50"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="MLZ-c1-dwr">
+                                    <size key="itemSize" width="90" height="90"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="2" minY="2" maxX="2" maxY="2"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Z5L-08-olQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCollectionViewCell" id="Z5L-08-olQ">
+                                        <rect key="frame" x="2" y="2" width="90" height="90"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EXk-u2-nxD">
+                                                    <rect key="frame" x="8" y="8" width="74" height="74"/>
+                                                </imageView>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Vzj-ww-dbc">
+                                                    <rect key="frame" x="35" y="35" width="20" height="20"/>
+                                                </activityIndicatorView>
+                                            </subviews>
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="EXk-u2-nxD" firstAttribute="leading" secondItem="Z5L-08-olQ" secondAttribute="leadingMargin" id="LTO-8T-qCH"/>
+                                            <constraint firstItem="Vzj-ww-dbc" firstAttribute="centerX" secondItem="Z5L-08-olQ" secondAttribute="centerX" id="NXi-dQ-iH6"/>
+                                            <constraint firstItem="Vzj-ww-dbc" firstAttribute="centerY" secondItem="Z5L-08-olQ" secondAttribute="centerY" id="Oar-85-aCu"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="EXk-u2-nxD" secondAttribute="trailing" id="jzf-9r-pE6"/>
+                                            <constraint firstItem="EXk-u2-nxD" firstAttribute="top" secondItem="Z5L-08-olQ" secondAttribute="topMargin" id="myi-9S-Mjj"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="EXk-u2-nxD" secondAttribute="bottom" id="rdr-fy-fkL"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="EXk-u2-nxD" id="pPd-vX-AvG"/>
+                                            <outlet property="spinner" destination="Vzj-ww-dbc" id="5qu-uc-Q79"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -52,6 +73,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Photorama" id="2Qh-g4-nhv"/>
+                    <connections>
+                        <outlet property="collectionView" destination="GPO-bb-SIu" id="2E8-Mj-N2B"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
