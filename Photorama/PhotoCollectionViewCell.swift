@@ -13,6 +13,8 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var spinner: UIActivityIndicatorView!
     
+    //update is a helper method to show you
+    //the activity indicator is needed and implement it
     func update(with image: UIImage?)  {
         if let imageToDisplay = image {
             spinner.stopAnimating()
@@ -21,6 +23,17 @@ class PhotoCollectionViewCell: UICollectionViewCell {
             spinner.startAnimating()
             imageView.image = nil
         }
-            
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        update(with: nil)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        update(with: nil)
     }
 }

@@ -19,8 +19,8 @@ class PhotoDataSource: NSObject, UICollectionViewDataSource {
         //2008FLHR
         //2017FXSB
         //salvania pword
-        let identifier = "UICollectionViewCell"
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
+        let identifier = "PhotoCollectionViewCell"
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! PhotoCollectionViewCell
         return cell
     }
 }
