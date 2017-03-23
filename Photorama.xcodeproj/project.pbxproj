@@ -17,6 +17,7 @@
 		D39C89531E7C7CA000387592 /* PhotoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39C89521E7C7CA000387592 /* PhotoStore.swift */; };
 		D39C89551E7C977100387592 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39C89541E7C977100387592 /* PhotosViewController.swift */; };
 		D3B144DA1E82E54600AEC219 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B144D91E82E54600AEC219 /* Photo.swift */; };
+		D3B144DC1E8359A900AEC219 /* PhotoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B144DB1E8359A900AEC219 /* PhotoDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		D39C89521E7C7CA000387592 /* PhotoStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoStore.swift; sourceTree = "<group>"; };
 		D39C89541E7C977100387592 /* PhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		D3B144D91E82E54600AEC219 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		D3B144DB1E8359A900AEC219 /* PhotoDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				D39C89291E7B1D6E00387592 /* LaunchScreen.storyboard */,
 				D39C892C1E7B1D6E00387592 /* Info.plist */,
 				D39C89521E7C7CA000387592 /* PhotoStore.swift */,
+				D3B144DB1E8359A900AEC219 /* PhotoDataSource.swift */,
 			);
 			path = Photorama;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				D39C89211E7B1D6E00387592 /* AppDelegate.swift in Sources */,
 				D39C89511E7C753500387592 /* FlickrAPI.swift in Sources */,
 				D39C89531E7C7CA000387592 /* PhotoStore.swift in Sources */,
+				D3B144DC1E8359A900AEC219 /* PhotoDataSource.swift in Sources */,
 				D39C89551E7C977100387592 /* PhotosViewController.swift in Sources */,
 				D3B144DA1E82E54600AEC219 /* Photo.swift in Sources */,
 			);
