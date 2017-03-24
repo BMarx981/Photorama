@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 enum ImageResult {
     case success(UIImage)
@@ -25,6 +26,17 @@ enum PhotosResult {
 class PhotoStore {
     
     let imageStore = ImageStore()
+    
+    let persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "Photorama")
+        container.loadPersistentStores {
+            (description, error) in
+            if let error = error {
+                print("Error setting up Core Data (\(error).")
+            }
+        }
+        return container
+    }
     
     //URLSession is a factory for URLSessionTask
     private let session: URLSession = {
